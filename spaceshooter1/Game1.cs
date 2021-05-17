@@ -44,15 +44,16 @@ namespace spaceshooter1
             switch (GameElements.currentState)
             {
                 case GameElements.State.Run:
-                    GameElements.RunDraw(_spriteBatch);
+                    GameElements.currentState = GameElements.RunUpdate(Content, Window, gameTime);
                     break;
                 case GameElements.State.Highscore:
-                    GameElements.HighScoreUpdate();
+                    GameElements.currentState = GameElements.HighScoreUpdate();
                     break;
                 case GameElements.State.Quit:
                     this.Exit();
                     break;
-                case GameElements.State.Meny:
+                default:
+                    GameElements.currentState =
                     GameElements.MenyUpdate();
                     break;
             
